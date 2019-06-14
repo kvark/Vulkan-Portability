@@ -47,6 +47,7 @@ typedef struct VkPhysicalDevicePortabilitySubsetFeaturesEXTX {
      VkStructureType    sType;
      void*              pNext;
      VkBool32           triangleFans;
+     VkBool32           linePolygonMode;
      VkBool32           separateStencilMaskRef;
      VkBool32           events;
      VkBool32           standardImageViews;

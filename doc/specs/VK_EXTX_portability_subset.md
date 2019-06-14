@@ -1,6 +1,6 @@
 # VK_EXTX_portability_subset
 
->**_Please Note_**:  This extension is currently defined as "EXTX", meaning "multivendor experimental". 
+>**_Please Note_**:  This extension is currently defined as "EXTX", meaning "multivendor experimental".
 That means the definition of this extension is in active development, and may break compatibility
 between point releases (defined as any increment of `VK_EXTX_PORTABILITY_SUBSET_SPEC_VERSION`).
 You are free to explore the extension and provide feedback, but it is not recommended to use this
@@ -50,6 +50,7 @@ features are supported.
              VkStructureType    sType;
              void*              pNext;
              VkBool32           triangleFans;
+             VkBool32           linePolygonMode;
              VkBool32           separateStencilMaskRef;
              VkBool32           events;
              VkBool32           standardImageViews;
@@ -58,7 +59,8 @@ features are supported.
 
 - `sType` is the type of this structure.
 - `pNext` is `NULL` or a pointer to an extension-specific structure.
-- `triangleFans` indicates whether this implementation supports rendering triangle fans in draw calls.
+- `triangleFans` indicates whether this implementation supports triangle fan primitive topology.
+- `linePolygonMode` indicates whether this implementation supports line-filled polygon rasterization.
 - `separateStencilMaskRef` indicates whether this implementation supports separate stencil reference
   mask values in the `VkStencilOpState` structure.
 - `events` indicates whether this implementation supports `VkEvent` functionality.
@@ -77,6 +79,9 @@ features are supported.
 
 - If the implementation sets `triangleFans` to `VK_FALSE`, the implementation does not support rendering triangle fans,
   and `VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN` **must** not be used.
+
+- If the implementation sets `linePolygonMode` to `VK_FALSE`, the implementation does not support line-rasterized
+  polygon, and `VK_POLYGON_MODE_LINE` **must** not be used.
 
 - If the implementation sets `separateStencilMaskRef` to `VK_FALSE`, the implementation does not support separate
   reference values for front and back stencil comparisons, and the `reference` members of

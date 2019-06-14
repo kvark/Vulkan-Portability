@@ -13,6 +13,7 @@ static void mock_vkGetPhysicalDeviceFeatures2KHR(VkPhysicalDevice physicalDevice
                 auto port_features = reinterpret_cast<VkPhysicalDevicePortabilitySubsetFeaturesEXTX*>(data);
                 // The implementation sets its results...
                 port_features->triangleFans = VK_FALSE;
+                port_features->linePolygonMode = VK_FALSE;
                 port_features->separateStencilMaskRef = VK_FALSE;
                 port_features->events = VK_FALSE;
                 port_features->standardImageViews = VK_FALSE;
